@@ -1,2 +1,2 @@
 # scrapy-docker
-Docker for scrapy
+Docker for python with scrapy
