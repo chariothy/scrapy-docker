@@ -4,8 +4,9 @@
 ARG PYVER
 FROM python:${PYVER} AS compile-env
 
-# Install libs
-RUN pip install --no-cache-dir --user scrapy
+# Update pip
+RUN pip install --upgrade pip --no-cache-dir \
+  pip install --no-cache-dir --user scrapy
 # 本地编译时需要加国内代理
 #RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --no-cache-dir --user -r ./requirements.txt
 
