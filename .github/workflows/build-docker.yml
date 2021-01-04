@@ -7,7 +7,7 @@ name: CI
 on:
   push:
     tags:
-      - v*  # v20201117
+      - v*  # Ex. v20201117
   pull_request:
     branches: [ master ]
 
