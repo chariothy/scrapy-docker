@@ -37,9 +37,12 @@ jobs:
       id: buildx
       uses: docker/setup-buildx-action@v1
     
-    - name: Login to docker hub
-      run: echo "${{ secrets.DOCKER_PWD }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
-      
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PWD }}
+    
     # Runs a set of commands using the runners shell
     - name: Build the image
       run: |
@@ -47,5 +50,5 @@ jobs:
             --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }} \
             --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }}-latest \
             --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }}-${{ steps.vars.outputs.tag }} \
-            --build-arg PYVER=${{ matrix.python-version }} \
-            --platform linux/amd64,linux/arm64 .
+            PYVER=${{ matrix.python-version }} \
+            --platform linux/amd64 .
