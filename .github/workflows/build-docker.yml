@@ -48,4 +48,4 @@ jobs:
             --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }}-latest \
             --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }}-${{ steps.vars.outputs.tag }} \
             --build-arg PYVER=${{ matrix.python-version }} \
-            --platforms linux/amd64,linux/arm64 .
+            --platform linux/amd64,linux/arm64 .
