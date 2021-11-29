@@ -2,6 +2,7 @@ scrapy
 scrapy-splash
 fake-useragent
 requests
+requests[socks]
 aiohttp
 sqlalchemy
 mysql-connector-python
