@@ -6,7 +6,7 @@ FROM python:${PYVER} AS compile-env
 
 # Update pip
 RUN pip install -U pip \
-  && pip install --no-cache-dir --user -r ./requirements.txt
+  && pip install --no-cache-dir --user -r requirements.txt
 # 本地编译时需要加国内代理
 #RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --no-cache-dir --user -r ./requirements.txt
 

@@ -1,3 +1,12 @@
 # scrapy-docker
 
-Docker for python with scrapy & mysql (sqlalchemy / mysql-connector-python / sqlacodegen).
+Docker for python with essential scrapy & mysql libraries.
+
+- scrapy
+- scrapy-splash
+- fake-useragent
+- requests
+- aiohttp
+- sqlalchemy
+- mysql-connector-python
+- sqlacodegen
