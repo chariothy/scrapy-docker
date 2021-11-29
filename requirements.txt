@@ -1,0 +1,8 @@
+scrapy
+scrapy-splash
+fake-useragent
+requests
+aiohttp
+sqlalchemy
+mysql-connector-python
+sqlacodegen
