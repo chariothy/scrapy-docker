@@ -53,9 +53,9 @@ jobs:
       - name: Build the image
         run: |
           docker buildx build --push \
-              --tag ${{ steps.vars.outputs.rep }}:latest \
-              --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }} \
-              --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }}-latest \
-              --tag ${{ steps.vars.outputs.rep }}:${{ matrix.python-version }}-${{ steps.vars.outputs.tag }} \
+              --tag ${{ env.rep }}:latest \
+              --tag ${{ env.rep }}:${{ matrix.python-version }} \
+              --tag ${{ env.rep }}:${{ matrix.python-version }}-latest \
+              --tag ${{ env.rep }}:${{ matrix.python-version }}-${{ env.tag }} \
               --build-arg PYVER=${{ matrix.python-version }} \
               --platform linux/amd64 .
