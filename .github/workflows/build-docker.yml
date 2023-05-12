@@ -24,21 +24,27 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - name: Set output
-      id: vars
-      run: |
-        echo ::set-output name=date::$(date +'%Y%m%d')
-        echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
-        echo ::set-output name=rep::$(echo $GITHUB_REPOSITORY | sed 's/-docker$//')
+      - name: get date
+        id: date
+        run: echo "date=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v2
+      - name: get git tag
+        id: tag
+        run: echo "tag=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v2
+      - name: get rep
+        id: rep
+        run: echo "rep=$(echo $GITHUB_REPOSITORY | sed 's/-docker$//')" >> $GITHUB_ENV
 
     # Runs a single command using the runners shell
     - name: Install buildx
       id: buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v2
     
     - name: Login to DockerHub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_TOKEN }}
