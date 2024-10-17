@@ -6,4 +6,5 @@ requests[socks]
 aiohttp
 sqlalchemy
 mysql-connector-python
+psycopg2
 sqlacodegen
